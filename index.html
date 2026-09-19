@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6f8" />
+    <title>论文工作台 · ScholarFlow</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <div>
+            <strong>ScholarFlow</strong>
+            <span>论文工作台</span>
+          </div>
+        </div>
+
+        <nav class="primary-nav" aria-label="主导航">
+          <button class="nav-item active" data-view="阅读台"><span class="nav-icon">▣</span> 阅读台</button>
+          <button class="nav-item" data-view="研究树"><span class="nav-icon">⌘</span> 研究树</button>
+          <button class="nav-item" data-view="投稿助手"><span class="nav-icon">↗</span> 投稿助手</button>
+        </nav>
+
+        <div class="sidebar-section">
+          <div class="section-label">
+            <span>我的文献</span>
+            <button class="icon-button small" id="addCollectionButton" title="新建分类">＋</button>
+          </div>
+          <button class="collection-item active"><span class="collection-dot blue"></span>全部文献 <span>24</span></button>
+          <button class="collection-item"><span class="collection-dot green"></span>核心参考 <span>8</span></button>
+          <button class="collection-item"><span class="collection-dot orange"></span>待精读 <span>6</span></button>
+          <button class="collection-item"><span class="collection-dot purple"></span>已引用 <span>10</span></button>
+        </div>
+
+        <div class="sidebar-section recent-section">
+          <div class="section-label"><span>最近打开</span><button class="text-button">查看全部</button></div>
+          <button class="recent-paper active">
+            <span class="paper-file">PDF</span>
+            <span class="paper-info"><strong>Retrieval-Augmented Generation...</strong><small>今天 10:24 · 42 页</small></span>
+          </button>
+          <button class="recent-paper">
+            <span class="paper-file">PDF</span>
+            <span class="paper-info"><strong>Large Language Models...</strong><small>昨天 · 18 页</small></span>
+          </button>
+          <button class="recent-paper">
+            <span class="paper-file">PDF</span>
+            <span class="paper-info"><strong>Scientific Writing in the AI Era</strong><small>周一 · 26 页</small></span>
+          </button>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="storage-meta"><span>本地空间</span><span>2.4 GB / 10 GB</span></div>
+          <div class="storage-bar"><span></span></div>
+          <button class="user-profile"><span class="avatar">林</span><span><strong>林晓雯</strong><small>研究者账户</small></span><span class="more">···</span></button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>我的工作台</span><span>/</span><strong id="breadcrumbView">阅读台</strong></div>
+          <div class="topbar-actions">
+            <button class="top-action" id="shortcutsButton"><span>⌘</span> 快捷键</button>
+            <button class="top-action" id="uploadButton"><span>↑</span> 导入文献</button>
+            <button class="avatar small-avatar">林</button>
+          </div>
+        </header>
+
+        <div class="workspace" id="readingWorkspace">
+          <section class="library-panel">
+            <div class="panel-heading">
+              <div><h1>文献库</h1><p>24 篇文献 · 按最近阅读排序</p></div>
+              <button class="icon-button" id="libraryMenuButton" title="文献库选项">···</button>
+            </div>
+            <div class="library-search">
+              <span>⌕</span>
+              <input id="librarySearch" type="search" placeholder="搜索标题、作者、标签..." />
+              <span class="search-shortcut">⌘ K</span>
+            </div>
+            <div class="library-tabs">
+              <button class="tab-button active">全部</button>
+              <button class="tab-button">未读 <span>12</span></button>
+              <button class="tab-button">已标注 <span>7</span></button>
+            </div>
+            <div class="paper-list" id="paperList">
+              <button class="paper-card selected" data-title="Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks">
+                <div class="paper-card-top"><span class="status-pill reading">正在阅读</span><span class="paper-options">···</span></div>
+                <h2>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</h2>
+                <p>Patrick Lewis · 2020 · NeurIPS</p>
+                <div class="paper-tags"><span>RAG</span><span>核心参考</span><span>已标注 12</span></div>
+                <div class="paper-progress"><span style="width: 64%"></span></div>
+                <div class="paper-card-bottom"><span>第 27 / 42 页</span><span>10:24</span></div>
+              </button>
+              <button class="paper-card" data-title="Large Language Models are Zero-Shot Reasoners">
+                <div class="paper-card-top"><span class="status-pill unread">未读</span><span class="paper-options">···</span></div>
+                <h2>Large Language Models are Zero-Shot Reasoners</h2>
+                <p>Wei et al. · 2022 · NeurIPS</p>
+                <div class="paper-tags"><span>Prompting</span><span>方法论</span></div>
+                <div class="paper-progress"><span style="width: 8%"></span></div>
+                <div class="paper-card-bottom"><span>第 1 / 12 页</span><span>昨天</span></div>
+              </button>
+              <button class="paper-card" data-title="Scientific Writing in the AI Era">
+                <div class="paper-card-top"><span class="status-pill saved">已收藏</span><span class="paper-options">···</span></div>
+                <h2>Scientific Writing in the AI Era: Opportunities and Risks</h2>
+                <p>Chen &amp; Kumar · 2024 · Nature</p>
+                <div class="paper-tags"><span>写作</span><span>伦理</span></div>
+                <div class="paper-progress"><span style="width: 42%"></span></div>
+                <div class="paper-card-bottom"><span>第 11 / 26 页</span><span>周一</span></div>
+              </button>
+            </div>
+            <div class="drop-zone" id="dropZone">
+              <span class="drop-icon">＋</span>
+              <strong>拖拽 PDF 到这里</strong>
+              <small>或 <button class="inline-button" id="browseButton">浏览本地文件</button></small>
+              <input id="fileInput" type="file" accept="application/pdf" hidden />
+            </div>
+          </section>
+
+          <section class="reader-panel">
+            <div class="reader-toolbar">
+              <div class="reader-title"><span class="file-icon">PDF</span><span>Retrieval-Augmented Generation...</span><span class="saved-indicator">已保存</span></div>
+              <div class="reader-tools">
+                <div class="tool-group">
+                  <button class="tool-button" id="prevPage" title="上一页">‹</button>
+                  <label class="page-input"><input id="pageInput" value="27" aria-label="当前页码" /><span>/ 42</span></label>
+                  <button class="tool-button" id="nextPage" title="下一页">›</button>
+                </div>
+                <div class="tool-group">
+                  <button class="tool-button" id="zoomOut" title="缩小">−</button>
+                  <span class="zoom-value" id="zoomValue">100%</span>
+                  <button class="tool-button" id="zoomIn" title="放大">＋</button>
+                </div>
+                <div class="tool-group">
+                  <button class="tool-button active" id="selectTool" title="选择文本">↖</button>
+                  <button class="tool-button" id="highlightButton" title="荧光标注">▰</button>
+                  <button class="tool-button" id="noteButton" title="添加批注">▤</button>
+                  <button class="tool-button" id="fullscreenButton" title="全屏阅读">⛶</button>
+                </div>
+              </div>
+            </div>
+            <div class="reader-body">
+              <aside class="outline-panel">
+                <div class="outline-heading"><strong>目录</strong><button class="icon-button small" title="收起目录">‹</button></div>
+                <div class="outline-list">
+                  <button class="outline-item"><span>1</span><span>Introduction</span></button>
+                  <button class="outline-item"><span>2</span><span>Related Work</span></button>
+                  <button class="outline-item active"><span>3</span><span>Methodology</span></button>
+                  <button class="outline-child"><span>3.1</span><span>Overview</span></button>
+                  <button class="outline-child"><span>3.2</span><span>Non-parametric Memory</span></button>
+                  <button class="outline-child active"><span>3.3</span><span>Retrieval-augmented Generation</span></button>
+                  <button class="outline-item"><span>4</span><span>Experiments</span></button>
+                  <button class="outline-item"><span>5</span><span>Conclusion</span></button>
+                  <button class="outline-item"><span>6</span><span>References</span></button>
+                </div>
+                <div class="outline-footer"><span class="mini-dot yellow"></span><span>12 个高亮</span><span class="mini-dot blue"></span><span>4 条批注</span></div>
+              </aside>
+              <div class="document-stage" id="documentStage">
+                <div class="document-page" id="documentPage">
+                  <div class="paper-header">
+                    <span>NeurIPS 2020</span><span>27</span>
+                  </div>
+                  <h3>3.3 Retrieval-augmented Generation</h3>
+                  <p class="paper-copy">In this section, we describe our approach to retrieval-augmented generation (RAG). RAG combines a pre-trained parametric memory with a non-parametric memory, which is indexed by a dense vector index of Wikipedia.</p>
+                  <p class="paper-copy">Our model can be viewed as a general-purpose fine-tuning recipe for <mark class="existing-highlight">knowledge-intensive NLP tasks</mark>. The retriever provides access to explicit knowledge, while the generator produces a fluent response conditioned on the retrieved passages.</p>
+                  <div class="equation">p<sub>RAG</sub>(y | x) = ∑<sub>z</sub> p<sub>η</sub>(z | x) p<sub>θ</sub>(y | x, z)</div>
+                  <p class="paper-copy">We use a pre-trained sequence-to-sequence transformer as the generator and a neural retriever trained jointly with the generator. This design allows the model to update its knowledge without expensive re-training of all parameters.</p>
+                  <div class="paper-columns">
+                    <div><p class="paper-copy">The retrieval component searches a large external memory for passages relevant to the input. We consider the top-k passages and marginalize over them during generation.</p><p class="paper-copy">This formulation has two practical advantages. First, the external memory can be updated independently. Second, the model can cite evidence for its predictions.</p></div>
+                    <div><p class="paper-copy">The generator is trained to condition on both the original input and the retrieved documents. During inference, the retriever and generator work together in an iterative pipeline.</p><p class="paper-copy">We find that this combination yields strong performance across open-domain question answering and fact verification.</p></div>
+                  </div>
+                  <div class="paper-footer"><span>Lewis et al.</span><span>3</span></div>
+                </div>
+                <div class="reader-status" id="readerStatus">阅读模式 · 可选择文本后添加高亮或批注</div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="ai-panel">
+            <div class="ai-header">
+              <div class="ai-title"><span class="ai-orb">✦</span><div><strong>AI 研究助手</strong><small>已读懂当前论文</small></div></div>
+              <button class="icon-button" id="aiMenuButton" title="助手选项">···</button>
+            </div>
+            <div class="ai-mode-tabs">
+              <button class="ai-tab active">问论文</button>
+              <button class="ai-tab">翻译</button>
+              <button class="ai-tab">提炼</button>
+            </div>
+            <div class="ai-suggestions">
+              <button data-prompt="用三句话解释 RAG 的核心思想">用三句话解释 RAG 的核心思想 <span>→</span></button>
+              <button data-prompt="这一节和我的论文有什么关系？">这一节和我的论文有什么关系？ <span>→</span></button>
+              <button data-prompt="找出这篇论文的关键实验结论">找出这篇论文的关键实验结论 <span>→</span></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+              <div class="message assistant">
+                <div class="message-avatar">✦</div>
+                <div class="message-bubble">你好，我已经定位到当前页的 <strong>Retrieval-augmented Generation</strong> 章节。你可以让我解释概念、翻译段落，或者把它和你的研究方向联系起来。</div>
+              </div>
+              <div class="message user">
+                <div class="message-bubble">RAG 为什么能减少模型“胡说”的情况？</div>
+              </div>
+              <div class="message assistant">
+                <div class="message-avatar">✦</div>
+                <div class="message-bubble">因为它先从外部知识库检索相关证据，再让生成模型基于这些内容回答。与只依赖参数记忆相比，RAG 可以：<ol><li>引入可追溯的事实依据</li><li>更新外部知识而不重训模型</li><li>降低凭空生成细节的概率</li></ol><button class="source-chip">↗ 查看原文第 3.3 节</button></div>
+              </div>
+            </div>
+            <form class="chat-composer" id="chatForm">
+              <textarea id="chatInput" rows="2" placeholder="问问这篇论文..."></textarea>
+              <div class="composer-bottom"><span>Enter 发送 · Shift + Enter 换行</span><button class="send-button" title="发送">↑</button></div>
+            </form>
+            <div class="vocab-strip"><span class="vocab-icon">Aa</span><span><strong>专业词库</strong><small>本次新增 3 个词条</small></span><button class="text-button">管理 →</button></div>
+          </aside>
+        </div>
+
+        <div class="research-view hidden" id="researchView">
+          <div class="view-heading"><div><span class="eyebrow">RESEARCH GRAPH</span><h1>研究树</h1><p>从你的论文主干出发，管理论点、证据和相关文献。</p></div><button class="primary-button" id="addNodeButton">＋ 添加节点</button></div>
+          <div class="research-layout">
+            <section class="research-canvas">
+              <div class="canvas-toolbar"><span><span class="live-dot"></span> 自动关联已开启</span><div><button class="tool-button">−</button><button class="tool-button">＋</button><button class="tool-button">⌖</button></div></div>
+              <div class="tree-map">
+                <div class="tree-root"><span class="node-type">主干论文</span><strong>面向知识密集型任务的<br />检索增强生成研究</strong><small>当前写作中 · 7 个章节</small></div>
+                <div class="tree-line vertical"></div>
+                <div class="tree-branches">
+                  <div class="tree-branch"><div class="tree-line horizontal"></div><div class="tree-node blue-node"><span>研究问题</span><strong>如何提升事实性与可解释性？</strong><small>3 篇相关文献</small></div><div class="tree-leaves"><div>RAG · 2020</div><div>Self-RAG · 2023</div></div></div>
+                  <div class="tree-branch"><div class="tree-line horizontal"></div><div class="tree-node green-node"><span>方法设计</span><strong>动态检索 + 证据重排</strong><small>2 篇相关文献</small></div><div class="tree-leaves"><div>REALM · 2020</div><div>Atlas · 2022</div></div></div>
+                  <div class="tree-branch"><div class="tree-line horizontal"></div><div class="tree-node orange-node"><span>实验验证</span><strong>开放域问答与事实核验</strong><small>4 篇相关文献</small></div><div class="tree-leaves"><div>FEVER</div><div>NQ / TriviaQA</div></div></div>
+                </div>
+              </div>
+            </section>
+            <aside class="research-inspector"><div class="inspector-heading"><span>节点详情</span><button class="icon-button">×</button></div><span class="node-badge blue">研究问题</span><h2>如何提升事实性与可解释性？</h2><p>这个节点关联了你的研究动机、问题定义和评价指标。</p><div class="inspector-section"><div><strong>关联文献</strong><span>3 篇</span></div><button class="related-paper"><span class="paper-file">PDF</span><span><strong>Retrieval-Augmented Generation</strong><small>NeurIPS · 2020</small></span></button><button class="related-paper"><span class="paper-file">PDF</span><span><strong>Self-RAG: Learning to Retrieve</strong><small>NeurIPS · 2023</small></span></button></div><button class="secondary-button full">✦ 让 AI 扩展这个节点</button></aside>
+          </div>
+        </div>
+
+        <div class="submission-view hidden" id="submissionView">
+          <div class="view-heading"><div><span class="eyebrow">SUBMISSION COPILOT</span><h1>投稿助手</h1><p>根据你的研究主题匹配期刊，并把投稿要求拆成可执行的清单。</p></div><button class="primary-button">✦ 分析我的论文</button></div>
+          <div class="submission-grid"><section class="journal-section"><div class="section-title"><h2>推荐期刊</h2><span>基于当前研究树</span></div><div class="journal-card recommended"><div class="journal-logo">N</div><div class="journal-meta"><div><h3>Nature Machine Intelligence</h3><span class="match-score">92% 匹配</span></div><p>关注人工智能理论、方法及其在科学与社会中的应用。</p><div class="journal-tags"><span>影响因子 23.8</span><span>审稿周期 8-12 周</span><span>开放获取可选</span></div></div><button class="icon-button">↗</button></div><div class="journal-card"><div class="journal-logo blue-logo">J</div><div class="journal-meta"><div><h3>Journal of Machine Learning Research</h3><span class="match-score">86% 匹配</span></div><p>机器学习领域的开放获取期刊，重视可复现性。</p><div class="journal-tags"><span>影响因子 6.0</span><span>审稿周期 12-16 周</span></div></div><button class="icon-button">↗</button></div></section><section class="checklist-section"><div class="section-title"><h2>投稿准备度</h2><span>4 / 7 完成</span></div><div class="readiness-ring"><div><strong>68</strong><small>/ 100</small></div></div><div class="checklist"><label><input type="checkbox" checked /> 摘要符合字数限制</label><label><input type="checkbox" checked /> 参考文献格式已统一</label><label><input type="checkbox" checked /> 图表分辨率符合要求</label><label><input type="checkbox" checked /> 伦理声明已添加</label><label><input type="checkbox" /> Cover Letter</label><label><input type="checkbox" /> 补充材料说明</label><label><input type="checkbox" /> 作者贡献声明</label></div><button class="secondary-button full">查看完整投稿指南 ↗</button></section></div>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+    <div class="modal-backdrop hidden" id="shortcutsModal"><div class="modal"><div class="modal-heading"><h2>快捷键</h2><button class="icon-button" id="closeShortcuts">×</button></div><div class="shortcut-row"><span>缩放页面</span><kbd>Ctrl</kbd><span>+</span><kbd>滚轮</kbd></div><div class="shortcut-row"><span>搜索文献</span><kbd>Ctrl</kbd><span>+</span><kbd>K</kbd></div><div class="shortcut-row"><span>发送提问</span><kbd>Enter</kbd></div><div class="shortcut-row"><span>添加高亮</span><kbd>H</kbd></div></div></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
