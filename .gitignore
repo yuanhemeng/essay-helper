@@ -10,5 +10,13 @@ Thumbs.db
 .vscode/
 .idea/
 coverage/
+htmlcov/
+.coverage
 __pycache__/
 *.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.venv/
+
+backend/data/
